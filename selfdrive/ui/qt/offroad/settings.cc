@@ -60,6 +60,12 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
       tr("Display speed in km/h instead of mph."),
       "../assets/offroad/icon_metric.png",
     },
+    {
+      "ShowSecondarySpeedometer",
+      tr("Show Secondary Speedometer"),
+      tr("Display speed in both mph and km/h."),
+      "../assets/offroad/icon_metric.png",
+    },
   };
 
 

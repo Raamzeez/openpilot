@@ -83,6 +83,7 @@ class SelfdriveD:
                                   ignore_valid=ignore, frequency=int(1/DT_CTRL))
 
     # read params
+    self.show_secondary_speedometer = self.params.get_bool("ShowSecondarySpeedometer")
     self.is_metric = self.params.get_bool("IsMetric")
     self.is_ldw_enabled = self.params.get_bool("IsLdwEnabled")
 
@@ -471,6 +472,7 @@ class SelfdriveD:
   def params_thread(self, evt):
     while not evt.is_set():
       self.is_metric = self.params.get_bool("IsMetric")
+      self.show_secondary_speedometer = self.params.get_bool("ShowSecondarySpeedometer")
       self.experimental_mode = self.params.get_bool("ExperimentalMode") and self.CP.openpilotLongitudinalControl
       self.personality = self.read_personality_param()
       time.sleep(0.1)

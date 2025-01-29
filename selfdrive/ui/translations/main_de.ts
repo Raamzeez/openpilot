@@ -1077,6 +1077,14 @@ This may take up to a minute.</source>
         <source>Enable driver monitoring even when openpilot is not engaged.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show Secondary Speedometer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display speed in both mph and km/h.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Updater</name>

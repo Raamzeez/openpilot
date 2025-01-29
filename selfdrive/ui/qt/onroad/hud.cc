@@ -10,6 +10,7 @@ HudRenderer::HudRenderer() {}
 
 void HudRenderer::updateState(const UIState &s) {
   is_metric = s.scene.is_metric;
+  show_secondary_speedometer = s.scene.show_secondary_speedometer;
   status = s.status;
 
   const SubMaster &sm = *(s.sm);
@@ -98,6 +99,18 @@ void HudRenderer::drawCurrentSpeed(QPainter &p, const QRect &surface_rect) {
 
   p.setFont(InterFont(66));
   drawText(p, surface_rect.center().x(), 290, is_metric ? tr("km/h") : tr("mph"), 200);
+
+  QString otherSpeedStr = is_metric ? QString::number(std::nearbyint(speed * KM_TO_MILE)) : QString::number(std::nearbyint(speed * MILE_TO_KM));
+
+  if (show_secondary_speedometer) {
+    p.setFont(InterFont(66, QFont::Bold));
+    drawText(p, surface_rect.center().x() - 50, 400, otherSpeedStr);
+
+    int offset = otherSpeedStr.length() >= 3 ? 60 : otherSpeedStr.length() >= 2 ? 40 : 20;
+
+    p.setFont(InterFont(32));
+    drawText(p, surface_rect.center().x() + offset, 390, is_metric ? tr("mph") : tr("km/h"), 200);
+  }
 }
 
 void HudRenderer::drawText(QPainter &p, int x, int y, const QString &text, int alpha) {

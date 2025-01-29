@@ -20,6 +20,7 @@ private:
   float set_speed = 0;
   bool is_cruise_set = false;
   bool is_metric = false;
+  bool show_secondary_speedometer = false;
   bool v_ego_cluster_seen = false;
   int status = STATUS_DISENGAGED;
 };
